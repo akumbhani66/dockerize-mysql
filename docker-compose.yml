@@ -14,3 +14,8 @@ services:
       - TZ=${MYSQL_TZ}
     expose:
       - ${MYSQL_PORT}
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+  
