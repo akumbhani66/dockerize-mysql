@@ -2,7 +2,6 @@ version: '3.6'
 
 services:
   db:
-    # image: mariadb
     image: jbergstroem/mariadb-alpine
     ports:
       - "${MYSQL_PORT}:3306"
@@ -12,10 +11,15 @@ services:
       - MYSQL_USER
       - MYSQL_PASSWORD
       - TZ=${MYSQL_TZ}
+    volumes:
+      - db_data:/var/lib/mysql
     expose:
       - ${MYSQL_PORT}
+
   adminer:
     image: adminer
     ports:
       - 8080:8080
-  
+
+volumes:
+  db_data:
